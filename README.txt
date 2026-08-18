@@ -1,17 +1,13 @@
-Buzzer DivTelegram One — Frontend Full
+Buzzer DivTelegram One — Frontend Glass Login Final
 
-Fitur aktif:
-- Login OTP + 2FA
-- Slot Akun 1-5
-- Sinkron grup asli per akun
-- Kirim pesan langsung ke grup terpilih
-- Kirim media + caption (maks. 10 MB)
-- Delay antar grup + maks grup
-- Stop batch aktif
-- Scheduler native Telegram: pesan dijadwalkan di server Telegram, jadi setelah jadwal berhasil dibuat PC tidak perlu menyala saat waktu kirim
-- Template, kampanye, backup/restore, export log
+Perubahan tampilan:
+- Halaman login aplikasi sebelum dashboard.
+- Daftar akun akses dashboard pada browser (localStorage) + login session (sessionStorage).
+- Dashboard transparan/glass seperti versi awal.
+- Background biru dengan beam, glow, partikel/gift halus.
+- Typing animation judul Buzzer DivTelegram One.
+- Tombol Keluar Aplikasi dan label user aktif.
+- Semua ID fitur lama dipertahankan agar login Telegram, sinkron grup, pesan/media, scheduler, template, campaign, backup/restore, dan log tetap bekerja.
 
-Backend default di config.js:
-https://buzzer-divtelegram-one-api.onrender.com
-
-Deploy frontend sebagai static site.
+Catatan keamanan:
+Login aplikasi ini hanya pengunci UI di browser statis, bukan autentikasi server. Jangan menganggapnya sebagai proteksi keamanan untuk data sensitif. Login Telegram tetap menggunakan backend yang sudah terpasang.

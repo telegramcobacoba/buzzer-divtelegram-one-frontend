@@ -7,14 +7,54 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="bg"></div>
-  <main class="shell">
+  <div class="scene-bg" aria-hidden="true">
+    <div class="grid-glow"></div>
+    <div class="beam beam-a"></div><div class="beam beam-b"></div><div class="beam beam-c"></div>
+    <div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div>
+    <div class="float-gift gift-a">🎁</div><div class="float-gift gift-b">✦</div><div class="float-gift gift-c">🎁</div>
+  </div>
+
+  <section id="appGate" class="gate-wrap">
+    <div class="login-card glass-strong">
+      <div class="brand-lockup"><span class="brand-orb">✹</span><strong>DIVTELEGRAM ONE</strong></div>
+      <div class="eyebrow">PUSAT BUZZER TELEGRAM</div>
+      <h1>Masuk, lalu mulai<br><span>Buzzer.</span></h1>
+      <div class="feature-pills"><span>✦ Multi akun</span><span>⚡ Buzzer cepat</span><span>◷ Jadwal otomatis</span></div>
+
+      <div id="loginForm">
+        <label>ID / Email
+          <input id="appLoginUser" autocomplete="username" placeholder="Masukkan ID pengguna" />
+        </label>
+        <label>Password
+          <input id="appLoginPassword" type="password" autocomplete="current-password" placeholder="••••••••••" />
+        </label>
+        <button id="appLoginBtn" class="login-main">Login ke Dashboard</button>
+        <button id="showRegisterBtn" class="link-btn" type="button">Belum punya akun? Daftar sekarang</button>
+      </div>
+
+      <div id="registerForm" class="hidden">
+        <label>Nama pengguna
+          <input id="appRegisterUser" autocomplete="username" placeholder="Contoh: Buzzer1" />
+        </label>
+        <label>Password baru
+          <input id="appRegisterPassword" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter" />
+        </label>
+        <button id="appRegisterBtn" class="login-main">Buat Akses Dashboard</button>
+        <button id="showLoginBtn" class="link-btn" type="button">Sudah punya akun? Masuk</button>
+      </div>
+      <div id="gateNotice" class="gate-notice"></div>
+      <div class="local-note">Akses ini hanya mengunci dashboard pada browser ini. Login Telegram tetap terpisah.</div>
+    </div>
+  </section>
+
+  <main id="dashboard" class="shell hidden">
     <header class="topbar">
       <div>
-        <h1>Buzzer DivTelegram One</h1>
-        <p id="summary">Status koneksi: belum ada akun terhubung</p>
+        <h1><span id="typingTitle">Buzzer DivTelegram One</span><span class="caret">|</span></h1>
+        <p>Kelola akun dan kirim pembaruan hanya ke grup yang Anda kelola atau telah memberi izin.</p>
+        <p id="summary" class="summary">Status koneksi: belum ada akun terhubung</p>
       </div>
-      <span class="badge">Telegram Account Manager</span>
+      <div class="user-actions"><span id="appUserBadge">Masuk sebagai Buzzer1</span><button id="appLogoutBtn">Keluar Aplikasi</button></div>
     </header>
 
     <section class="panel account-panel">
@@ -28,9 +68,9 @@
       <div id="slotStatus" class="slot-status"></div>
 
       <div class="auth-grid">
-        <label>App api_id<input id="apiId" inputmode="numeric" autocomplete="off" placeholder="Contoh: 12345678"></label>
-        <label>App api_hash<input id="apiHash" autocomplete="off" placeholder="32 karakter api_hash"></label>
-        <label>Nomor Telegram<input id="phone" autocomplete="tel" placeholder="+62812..."></label>
+        <label>App api_id<input id="apiId" inputmode="numeric" autocomplete="off" placeholder="Dari my.telegram.org"></label>
+        <label>App api_hash<input id="apiHash" autocomplete="off" placeholder="Masukkan api_hash"></label>
+        <label>Nomor Telegram<input id="phone" autocomplete="tel" placeholder="Contoh: +628123456789"></label>
         <button id="loginBtn">Login & Ambil Grup</button>
       </div>
 
@@ -104,5 +144,6 @@
   </main>
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script src="ui-login.js"></script>
 </body>
 </html>
