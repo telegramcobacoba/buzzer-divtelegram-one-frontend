@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Buzzer DivTelegram One</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <h1>Buzzer DivTelegram One</h1>
+        <p id="summary">Status koneksi: belum ada akun terhubung</p>
+      </div>
+      <span class="badge">Telegram Account Manager</span>
+    </header>
+
+    <section class="panel account-panel">
+      <div class="row account-row">
+        <label>Slot akun
+          <select id="slotSelect"></select>
+        </label>
+        <div id="activeAccountText" class="account-state">Akun aktif: belum login</div>
+        <button id="logoutBtn" class="danger">Logout & Hapus Sesi</button>
+      </div>
+      <div id="slotStatus" class="slot-status"></div>
+
+      <div class="auth-grid">
+        <label>App api_id<input id="apiId" inputmode="numeric" autocomplete="off" placeholder="Contoh: 12345678"></label>
+        <label>App api_hash<input id="apiHash" autocomplete="off" placeholder="32 karakter api_hash"></label>
+        <label>Nomor Telegram<input id="phone" autocomplete="tel" placeholder="+62812..."></label>
+        <button id="loginBtn">Login & Ambil Grup</button>
+      </div>
+
+      <div id="otpRow" class="auth-grid hidden">
+        <label>Kode OTP<input id="otp" inputmode="numeric" autocomplete="one-time-code"></label>
+        <button id="verifyOtpBtn" class="wide2">Verifikasi OTP</button>
+      </div>
+      <div id="twoFaRow" class="auth-grid hidden">
+        <label>Password 2FA<input id="password2fa" type="password" autocomplete="current-password"></label>
+        <button id="verify2faBtn" class="wide2">Verifikasi Password 2FA</button>
+      </div>
+      <div id="authNotice" class="notice"></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="panel groups-panel">
+        <div class="panel-title"><span>GRUP YANG DIIKUTI</span><span id="groupCount">0 grup</span></div>
+        <div class="group-actions">
+          <button id="refreshGroupsBtn">Refresh Grup</button>
+          <button id="selectAllBtn">Pilih Semua</button>
+          <button id="clearBtn">Kosongkan</button>
+        </div>
+        <div class="filter-row">
+          <input id="groupSearch" placeholder="Cari nama grup">
+          <label class="check"><input id="selectedOnly" type="checkbox"> Hanya dipilih</label>
+        </div>
+        <div id="groupList" class="group-list"><div class="empty">Login akun lalu klik Refresh Grup.</div></div>
+      </aside>
+
+      <section class="right-col">
+        <div class="panel compose-panel">
+          <div class="panel-title">PESAN / CAPTION</div>
+          <textarea id="message" placeholder="Tulis pesan untuk grup yang dipilih..."></textarea>
+          <div class="compose-tools">
+            <label class="file-btn">Pilih Media<input id="imageInput" type="file" accept="image/*,video/mp4,application/pdf"></label>
+            <span id="imageName">Tidak ada media dipilih</span>
+            <input id="templateName" placeholder="Nama template">
+            <select id="templateSelect"><option value="">Template tersimpan</option></select>
+            <button id="saveTemplateBtn">Simpan</button>
+            <button id="loadTemplateBtn">Muat</button>
+          </div>
+        </div>
+
+        <div class="panel campaign-panel">
+          <span>Kampanye:</span>
+          <input id="campaignName" placeholder="Nama kampanye">
+          <select id="campaignSelect"><option value="">Pilih kampanye</option></select>
+          <button id="saveCampaignBtn">Simpan Kampanye</button>
+          <button id="loadCampaignBtn">Muat</button>
+          <button id="backupBtn">Backup</button>
+          <label class="file-btn compact">Restore<input id="restoreInput" type="file" accept="application/json"></label>
+        </div>
+
+        <div class="panel send-panel">
+          <div class="send-settings">
+            <label>Jeda (detik): <input id="delay" type="number" min="1" value="10"></label>
+            <label>Maks. grup: <input id="maxGroups" type="number" min="1" max="200" value="20"></label>
+          </div>
+          <div class="send-actions">
+            <button id="startBtn" class="primary">Start Kirim</button>
+            <button id="testBtn">Tes Koneksi</button>
+            <button id="stopBtn">Stop</button>
+            <button id="scheduleBtn">Jadwalkan Telegram</button>
+            <input id="scheduleAt" type="datetime-local">
+            <button id="exportLogBtn">Export Log</button>
+          </div>
+          <div id="logBox" class="log-box"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
