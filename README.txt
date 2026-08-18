@@ -11,3 +11,10 @@ Perubahan tampilan:
 
 Catatan keamanan:
 Login aplikasi ini hanya pengunci UI di browser statis, bukan autentikasi server. Jangan menganggapnya sebagai proteksi keamanan untuk data sensitif. Login Telegram tetap menggunakan backend yang sudah terpasang.
+
+
+UI update:
+- Login memakai login-background.png (gambar user)
+- Banyak efek petir kecil yang berkedip acak
+- Login card dirapikan dan dibuat lebih transparan/glass
+- Typing loop BUZZER DIVTELEGRAM ONE tetap aktif
