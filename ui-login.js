@@ -31,7 +31,35 @@
     };
     step();
   }
+
+  const liveReviews=[
+    {text:'Wah, aplikasi ini bagus banget dan nyaman digunakan 🔥',avatar:'avatar-1.svg'},
+    {text:'Keren banget aplikasinya, tampilannya simpel dan gampang digunakan 😍',avatar:'avatar-2.svg'},
+    {text:'Baru coba login, ternyata aplikasinya bagus banget 👍',avatar:'avatar-3.svg'},
+    {text:'Mantap, aksesnya cepat dan aplikasinya enak banget digunakan ⚡',avatar:'avatar-4.svg'},
+    {text:'Nggak nyangka sebagus ini, aplikasinya simpel dan nyaman dipakai ✨',avatar:'avatar-5.svg'}
+  ];
+  let liveReviewIndex=0, liveTimer=null;
+  function startLiveReviews(){
+    const toast=q('liveActivityToast'), text=q('liveActivityText'), avatar=q('liveActivityAvatar');
+    if(!toast||!text||!avatar||liveTimer)return;
+    const cycle=()=>{
+      const item=liveReviews[liveReviewIndex%liveReviews.length];
+      toast.classList.remove('show');
+      setTimeout(()=>{
+        text.textContent=item.text;
+        avatar.src=item.avatar;
+        toast.classList.add('show');
+      },280);
+      setTimeout(()=>toast.classList.remove('show'),3900);
+      liveReviewIndex=(liveReviewIndex+1)%liveReviews.length;
+    };
+    setTimeout(cycle,650);
+    liveTimer=setInterval(cycle,4700);
+  }
+
   makeLightning();
+  startLiveReviews();
   const saved=currentUser();if(saved)q('appLoginUser').value=saved.user;
   const logged=sessionStorage.getItem('bdto_app_logged_in')==='1'&&!!saved;setScreen(logged,saved?.user);if(logged)startTyping();
 })();

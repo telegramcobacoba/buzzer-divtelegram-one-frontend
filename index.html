@@ -18,6 +18,13 @@
   </div>
 
   <section id="appGate" class="gate-wrap">
+    <div id="liveActivityToast" class="live-activity-toast" role="status" aria-live="polite">
+      <img id="liveActivityAvatar" class="live-activity-avatar" src="avatar-1.svg" alt="Avatar pengguna">
+      <div class="live-activity-copy">
+        <div class="live-activity-label"><span class="live-dot"></span> ULASAN PENGGUNA</div>
+        <div id="liveActivityText" class="live-activity-text">Wah, aplikasi ini bagus banget dan nyaman digunakan 🔥</div>
+      </div>
+    </div>
     <div class="login-card glass-strong">
       <div class="brand-lockup"><span class="brand-orb">✹</span><strong>DIVTELEGRAM ONE</strong></div>
       <div class="eyebrow">PUSAT BUZZER TELEGRAM</div>
@@ -114,6 +121,21 @@
             <select id="templateSelect"><option value="">Template tersimpan</option></select>
             <button id="saveTemplateBtn">Simpan</button>
             <button id="loadTemplateBtn">Muat</button>
+          </div>
+          <div class="link-cta-box">
+            <div class="link-cta-head">
+              <div><strong>LINK CTA</strong><span>Opsional · maksimal 3 pilihan</span></div>
+              <button id="clearLinksBtn" type="button" class="ghost-small">Kosongkan Link</button>
+            </div>
+            <div class="link-grid">
+              <input id="linkLabel1" maxlength="40" placeholder="Nama link 1, contoh: Daftar Sekarang">
+              <input id="linkUrl1" inputmode="url" placeholder="https://contoh.com">
+              <input id="linkLabel2" maxlength="40" placeholder="Nama link 2, contoh: Hubungi Admin">
+              <input id="linkUrl2" inputmode="url" placeholder="https://t.me/username">
+              <input id="linkLabel3" maxlength="40" placeholder="Nama link 3, contoh: Lihat Promo">
+              <input id="linkUrl3" inputmode="url" placeholder="https://contoh.com/promo">
+            </div>
+            <div class="link-note">Dikirim sebagai teks CTA yang dapat diklik dari akun Telegram biasa. Tombol inline native Telegram hanya tersedia bila pengirim login sebagai bot.</div>
           </div>
         </div>
 

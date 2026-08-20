@@ -1,20 +1,13 @@
-Buzzer DivTelegram One — Frontend Glass Login Final
+Buzzer DivTelegram One — Frontend Fantasy + Link CTA
 
-Perubahan tampilan:
-- Halaman login aplikasi sebelum dashboard.
-- Daftar akun akses dashboard pada browser (localStorage) + login session (sessionStorage).
-- Dashboard transparan/glass seperti versi awal.
-- Background biru dengan beam, glow, partikel/gift halus.
-- Typing animation judul Buzzer DivTelegram One.
-- Tombol Keluar Aplikasi dan label user aktif.
-- Semua ID fitur lama dipertahankan agar login Telegram, sinkron grup, pesan/media, scheduler, template, campaign, backup/restore, dan log tetap bekerja.
+Tambahan:
+- 3 Link CTA opsional (nama + URL)
+- Campaign menyimpan dan memuat Link CTA
+- Tetap mendukung pesan, media, delay, schedule, multi akun dan sinkron grup
 
-Catatan keamanan:
-Login aplikasi ini hanya pengunci UI di browser statis, bukan autentikasi server. Jangan menganggapnya sebagai proteksi keamanan untuk data sensitif. Login Telegram tetap menggunakan backend yang sudah terpasang.
+Catatan: akun Telegram biasa tidak dapat membuat inline keyboard bot. Link CTA dikirim sebagai teks hyperlink yang dapat diklik.
 
-
-UI update:
-- Login memakai login-background.png (gambar user)
-- Banyak efek petir kecil yang berkedip acak
-- Login card dirapikan dan dibuat lebih transparan/glass
-- Typing loop BUZZER DIVTELEGRAM ONE tetap aktif
+Update Live Activity Login:
+- Ulasan pengguna tampil bergantian otomatis di bagian atas halaman login.
+- Setiap ulasan memiliki avatar orang yang berbeda.
+- Animasi slide/fade, status dot aktif, dan tampilan pill glow.
