@@ -1,0 +1,11 @@
+AUTO RESTORE SESSION FIX
+
+Perubahan:
+- Login dashboard sekarang disimpan di localStorage, sehingga refresh/tab baru tidak otomatis kembali ke layar login.
+- Saat dashboard dimuat, Akun 1-5 otomatis dicek ke endpoint /auth/status.
+- Jika session Telegram masih valid di backend, status AKTIF dipulihkan otomatis.
+- Akun yang sedang dipilih otomatis memuat ulang grup setelah session terkonfirmasi.
+- Tidak mengubah sender, media, scheduler, Link CTA, Live Activity, avatar, background, atau typing effect.
+
+Catatan:
+Session Telegram tetap bergantung pada session backend. Jika backend Render kehilangan session karena restart/redeploy dan penyimpanan server tidak persisten, OTP mungkin tetap diperlukan lagi. Fix ini khusus mencegah status akun hilang hanya karena refresh browser ketika session backend masih valid.

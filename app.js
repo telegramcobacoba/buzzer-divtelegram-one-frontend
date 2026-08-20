@@ -62,4 +62,23 @@ $("startBtn").onclick=async()=>{try{if(state.jobPoll)throw new Error("Masih ada 
 $("stopBtn").onclick=async()=>{try{if(!state.activeJob?.id)return log("Tidak ada batch aktif.");const d=await api(`/send/jobs/${encodeURIComponent(state.activeJob.id)}/stop`,{method:"POST",body:"{}"});state.activeJob=d.job;log("Permintaan Stop dikirim. Pesan yang sudah terkirim tidak ditarik kembali.")}catch(e){log(e.message,"error")}};
 $("scheduleBtn").onclick=async()=>{try{const payload=await selectedPayload(true);const when=new Date(payload.scheduleAt);log(`Mengirim jadwal ke Telegram untuk ${Math.min(payload.groupIds.length,payload.maxGroups)} grup...`);const d=await api("/schedule",{method:"POST",body:JSON.stringify(payload)});log(`Schedule tersimpan di Telegram: ${d.scheduled} berhasil, ${d.failed} gagal. Mulai ${when.toLocaleString("id-ID")}.`,d.failed?"error":"success");for(const r of (d.results||[]).filter(x=>!x.ok))log(`${r.title||r.groupId}: ${r.error}`,"error")}catch(e){log(e.message,"error")}};
 $("exportLogBtn").onclick=()=>{const text=[...document.querySelectorAll(".log-line")].reverse().map(x=>x.textContent).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:"text/plain"}));a.download="buzzer-divtelegram-log.txt";a.click();URL.revokeObjectURL(a.href)};
-renderTemplates();renderCampaigns();renderSlots();loadSlotInputs();(async()=>{for(let i=1;i<=5;i++)if(state.slots[i].phone)await checkStatus(state.slots[i]);renderSlots();})();
+renderTemplates();renderCampaigns();renderSlots();loadSlotInputs();
+(async()=>{
+  // AUTO-RESTORE: setelah refresh, cek ulang seluruh slot ke backend.
+  // Jangan percaya status cached di browser sebagai sumber kebenaran.
+  let restored=0;
+  for(let i=1;i<=5;i++){
+    const s=state.slots[i];
+    if(!s.phone){s.loggedIn=false;continue}
+    if(await checkStatus(s)) restored++;
+  }
+  saveSlots();
+  renderSlots();
+  const current=slotObj();
+  if(current.phone && current.loggedIn){
+    notice(`Session Akun ${state.slot} dipulihkan. Memuat grup...`,`success`);
+    await refreshGroups(true);
+  }else if(restored){
+    notice(`${restored} session Telegram berhasil dipulihkan. Pilih akun aktif untuk memuat grup.`,`success`);
+  }
+})();
